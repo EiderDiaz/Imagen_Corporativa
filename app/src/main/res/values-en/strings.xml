@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Imagen_Corporativa</string>
+    <string name="accent">Acento</string>
+    <string name="primario_obscuro">primário obscuro</string>
+    <string name="primario">primário</string>
+    <string name="bienvenido">Welcome</string>
+</resources>

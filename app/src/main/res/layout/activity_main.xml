@@ -43,7 +43,7 @@
     <TextView
         android:textColor="@color/colorPrimary"
         android:textSize="30dp"
-        android:text="Primario"
+        android:text="@string/primario"
         app:layout_anchor="@id/appbarlayout"
         android:paddingTop="40dp"
         app:layout_anchorGravity="bottom|center"
@@ -52,7 +52,7 @@
     <TextView
         android:textColor="@color/colorPrimaryDark"
         android:textSize="40dp"
-        android:text="Primario Obscuro"
+        android:text="@string/primario_obscuro"
         app:layout_anchor="@id/appbarlayout"
         android:paddingTop="115dp"
         app:layout_anchorGravity="bottom|center"
@@ -61,7 +61,7 @@
     <TextView
         android:textColor="@color/colorAccent"
         android:textSize="48dp"
-        android:text="Accent"
+        android:text="@string/accent"
         app:layout_anchor="@id/appbarlayout"
         android:paddingTop="210dp"
         app:layout_anchorGravity="bottom|center"

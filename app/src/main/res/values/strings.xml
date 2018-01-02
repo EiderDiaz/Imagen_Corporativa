@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Imagen_Corporativa</string>
+    <string name="accent">Acento</string>
+    <string name="primario_obscuro">Primario Obscuro</string>
+    <string name="primario">Primario</string>
+    <string name="bienvenido">Bienvenido</string>
 </resources>
