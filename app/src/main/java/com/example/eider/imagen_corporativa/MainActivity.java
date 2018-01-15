@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Idiomas_Multipantallas.class);
+                Intent intent = new Intent(getApplicationContext(),lista_mascota.class);
                 startActivity(intent);
             }
         });

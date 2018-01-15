@@ -4,4 +4,5 @@
     <string name="primario_obscuro">Primario Obscuro</string>
     <string name="primario">Primario</string>
     <string name="bienvenido">Bienvenido</string>
+    <string name="title_activity_lista_mascota">lista_mascota</string>
 </resources>
