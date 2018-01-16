@@ -37,6 +37,7 @@ public class lista_mascota extends AppCompatActivity {
         Arraylistmascotas.add(new Mascota("Bad bunny",7,"images"));
         Arraylistmascotas.add(new Mascota("Snowball",2,"snowball"));
         Arraylistmascotas.add(new Mascota("Este perro",3,"perro1"));
+        Arraylistmascotas.add(new Mascota("sanic again",1,"sanic2"));
 
 
         mascotas_adapter = new Mascotas_adapter(Arraylistmascotas,getApplicationContext());
