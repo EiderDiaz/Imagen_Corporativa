@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.eider.imagen_corporativa.modelos.Top5Mascotas">
+    tools:context="com.example.eider.imagen_corporativa.Top5Mascotas">
 
 
     <include android:id="@+id/actionbar"
-        layout="@layout/actionbar">
+        layout="@layout/actionbarhijo">
     </include>
 
 
