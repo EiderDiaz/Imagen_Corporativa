@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -13,39 +16,37 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.eider.imagen_corporativa.adapters.Mascotas_adapter;
+import com.example.eider.imagen_corporativa.adapters.PageAdapter;
 import com.example.eider.imagen_corporativa.modelos.Mascota;
 
 import java.util.ArrayList;
 
 public class lista_mascota extends AppCompatActivity {
 
-    private Mascotas_adapter mascotas_adapter;
-    private RecyclerView recyclerView;
-    ArrayList<Mascota> Arraylistmascotas = new ArrayList<>();
+
+    private  Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_mascota);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.actionbar);
-        setSupportActionBar(toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        SetupViewPager();
+        if (toolbar != null){
+            setSupportActionBar(toolbar);
 
-        recyclerView= (RecyclerView) findViewById(R.id.recycler_view_mascotas);
-        Arraylistmascotas.add(new Mascota("Sanic",5,"sanic"));
-        Arraylistmascotas.add(new Mascota("Bugs bunny",6,"bugs"));
-        Arraylistmascotas.add(new Mascota("Bad bunny",7,"images"));
-        Arraylistmascotas.add(new Mascota("Snowball",2,"snowball"));
-        Arraylistmascotas.add(new Mascota("Este perro",3,"perro1"));
-        Arraylistmascotas.add(new Mascota("sanic again",1,"sanic2"));
+        }
 
 
-        mascotas_adapter = new Mascotas_adapter(Arraylistmascotas,getApplicationContext());
-        recyclerView.setAdapter(mascotas_adapter);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayoutManager.VERTICAL));
+
+
+       /* */
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -60,13 +61,26 @@ public class lista_mascota extends AppCompatActivity {
 
     }
 
+    private ArrayList<Fragment> agregarfragment(){
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments.add(new fragment_recyclerview());
+        fragments.add(new  FragmentPerfil());
+        return  fragments;
 
-    public void top5(View view){
+    }
+    private void SetupViewPager(){
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),agregarfragment()));
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setIcon(R.drawable.top5);
+        tabLayout.getTabAt(1).setIcon(R.drawable.bone);
+
+    }
+   /* public void top5(View view){
         Intent intent = new Intent(getApplicationContext(), Top5Mascotas.class);
         intent.putExtra("lista",Arraylistmascotas);
         startActivity(intent);
 
-    }
+    } */
 
 
 
