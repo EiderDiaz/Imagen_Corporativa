@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.eider.imagen_corporativa">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/top5"
@@ -10,28 +10,36 @@
         android:roundIcon="@drawable/top5"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
-
-
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".lista_mascota"
             android:label="@string/title_activity_lista_mascota"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:theme="@style/AppTheme"
+            android:name=".Top5Mascotas"
             android:parentActivityName=".lista_mascota"
-            android:name=".Top5Mascotas">
-            <!--soporte para versiones anterores-->
+            android:theme="@style/AppTheme">
+
+            <!-- soporte para versiones anterores -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".lista_mascota" />
         </activity>
+        <activity android:name=".ToolBarMenu.About_me" />
+        <activity
+            android:name=".Email.Config"
+            android:label="@string/title_activity_contacto"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Contact"
+            android:label="@string/title_activity_contact"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

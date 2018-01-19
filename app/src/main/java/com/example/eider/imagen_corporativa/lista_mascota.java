@@ -8,16 +8,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-import com.example.eider.imagen_corporativa.adapters.Mascotas_adapter;
+import com.example.eider.imagen_corporativa.ToolBarMenu.About_me;
 import com.example.eider.imagen_corporativa.adapters.PageAdapter;
-import com.example.eider.imagen_corporativa.modelos.Mascota;
 
 import java.util.ArrayList;
 
@@ -61,6 +59,28 @@ public class lista_mascota extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+            getMenuInflater().inflate(R.menu.menu_opciones,menu);
+            return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.mabout:
+                    Intent intent = new Intent(getApplicationContext(),About_me.class);
+                    startActivity(intent);
+                break;
+            case  R.id.contacto:
+                Intent intent1 = new Intent(getApplicationContext(),Contact.class);
+                startActivity(intent1);
+                    break;
+
+        }
+        return  true;
+    }
+
     private ArrayList<Fragment> agregarfragment(){
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new fragment_recyclerview());
@@ -75,12 +95,11 @@ public class lista_mascota extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.bone);
 
     }
-   /* public void top5(View view){
+    public void top5(View view){
         Intent intent = new Intent(getApplicationContext(), Top5Mascotas.class);
-        intent.putExtra("lista",Arraylistmascotas);
         startActivity(intent);
 
-    } */
+    }
 
 
 
