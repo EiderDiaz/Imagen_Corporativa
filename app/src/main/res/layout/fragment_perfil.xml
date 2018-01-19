@@ -1,13 +1,32 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.eider.imagen_corporativa.FragmentPerfil">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.example.eider.imagen_corporativa.fragment_recyclerview">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/imgPerfil"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/badbunny"
+        app:civ_border_color="#0288D1"
+        app:civ_border_width="5dp"
+        app:civ_shadow="true"
+        app:civ_shadow_color="#8BC34A"
+        app:civ_shadow_radius="10" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/imgPerfil"
+        android:id="@+id/grid_recycler_view_mascota"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="4dp"
+        android:scrollbars="vertical"
+        />
 
-</FrameLayout>
+</RelativeLayout>
