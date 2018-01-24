@@ -17,11 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
+
                 android:id="@+id/imagen_mascota"
-                android:scaleType="centerCrop"
+                android:scaleType="centerInside"
                 android:src="@drawable/sanic"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="100dp" />
 
             <ImageView
                 android:id="@+id/raiting_mascota"
@@ -29,17 +30,6 @@
                 android:src="@drawable/bone"
                 android:layout_width="30dp"
                 android:layout_height="30dp" />
-
-            <TextView
-                android:id="@+id/tvnombre_mascota"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imagen_mascota"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:text="sanic"
-                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/calificacion"
@@ -50,14 +40,6 @@
                 android:layout_below="@id/imagen_mascota"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <ImageView
-                android:src="@drawable/bone1"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/imagen_mascota"
-                android:id="@+id/boton_rate"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

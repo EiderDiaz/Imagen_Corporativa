@@ -34,17 +34,15 @@ public class grid_recyclerview_adapter extends  RecyclerView.Adapter<grid_recycl
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView nombre, raiting;
-        public ImageView imagenMascota, huesoRate;
+        public TextView  raiting;
+        public ImageView imagenMascota;
 
 
 
         public MyViewHolder(View view) {
             super(view);
-            nombre=(TextView) view.findViewById(R.id.tvnombre_mascota);
             raiting = (TextView) view.findViewById(R.id.calificacion);
             imagenMascota =  (ImageView) view.findViewById(R.id.imagen_mascota);
-            huesoRate = (ImageView) view.findViewById(R.id.boton_rate);
 
         }
 
@@ -60,7 +58,6 @@ public class grid_recyclerview_adapter extends  RecyclerView.Adapter<grid_recycl
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
             final Mascota mascota = ArraylistMascotas.get(position);
-            holder.nombre.setText(mascota.getNombre());
             holder.raiting.setText(""+mascota.getRaiting());
 ///////////// mamalon si me sale de poner imagen directo solo usando string
             Resources res = context.getResources();
@@ -70,17 +67,6 @@ public class grid_recyclerview_adapter extends  RecyclerView.Adapter<grid_recycl
         holder.imagenMascota.setImageDrawable(drawable );
         ///////////
 
-    holder.huesoRate.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-           int Contador=0;
-           Contador++;
-           int nuevorate = mascota.getRaiting()+Contador;
-           mascota.setRaiting(nuevorate);
-           holder.raiting.setText(""+nuevorate);
-            Toast.makeText(context, "le diste like a "+mascota.getNombre(), Toast.LENGTH_SHORT).show();
-        }
-    });
 
     }
 
