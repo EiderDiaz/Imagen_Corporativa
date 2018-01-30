@@ -1,8 +1,13 @@
 package com.example.eider.imagen_corporativa;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,9 +15,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.eider.imagen_corporativa.adapters.Mascotas_adapter;
 import com.example.eider.imagen_corporativa.modelos.Mascota;
+import com.example.eider.imagen_corporativa.sqlite.BaseDatos;
 
 import java.util.ArrayList;
 
@@ -24,7 +32,7 @@ public class fragment_recyclerview extends Fragment {
     private Mascotas_adapter mascotas_adapter;
     private RecyclerView recyclerView;
     ArrayList<Mascota> Arraylistmascotas = new ArrayList<>();
-
+    BaseDatos admin;
 
     public fragment_recyclerview() {
         // Required empty public constructor
@@ -32,18 +40,29 @@ public class fragment_recyclerview extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View Roooview = inflater.inflate(R.layout.fragment_fragment_recyclerview, container, false);
         recyclerView = (RecyclerView) Roooview.findViewById(R.id.recycler_view_mascotas);
-        Arraylistmascotas.add(new Mascota("Sanic", 5, "sanic"));
-        Arraylistmascotas.add(new Mascota("Bugs bunny", 6, "bugs"));
-        Arraylistmascotas.add(new Mascota("Bad bunny", 7, "images"));
-        Arraylistmascotas.add(new Mascota("Snowball", 2, "snowball"));
-        Arraylistmascotas.add(new Mascota("Este perro", 3, "perro1"));
-        Arraylistmascotas.add(new Mascota("sanic again", 1, "sanic2"));
+        admin = new BaseDatos(getContext());
+        ArrayList<Mascota> testLIST = admin.obtenerTodosLasMascotas();
+        for (Mascota mascota:testLIST){
+            Arraylistmascotas.add(mascota);
+        }
+        FloatingActionButton fab = (FloatingActionButton) Roooview.findViewById(R.id.fab1);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "agregar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
 
+                Intent intent = new Intent(getContext(),AgregarMascota.class);
+                intent.putExtra("lista",Arraylistmascotas);
+                startActivityForResult(intent,0);
+
+            }
+        });
 
         mascotas_adapter = new Mascotas_adapter(Arraylistmascotas, getActivity());
         recyclerView.setAdapter(mascotas_adapter);
@@ -53,5 +72,24 @@ public class fragment_recyclerview extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         return Roooview;
 
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            if (resultCode == Activity.RESULT_OK) {
+                if(data.getExtras().containsKey("lista")) {
+                    Arraylistmascotas = (ArrayList<Mascota>) data.getExtras().getSerializable("lista");
+                    mascotas_adapter = new Mascotas_adapter(Arraylistmascotas, getActivity());
+                    recyclerView.setAdapter(mascotas_adapter);
+                }
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
     }
 }

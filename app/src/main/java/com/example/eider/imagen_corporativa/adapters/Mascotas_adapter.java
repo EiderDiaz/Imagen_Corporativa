@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.eider.imagen_corporativa.R;
 import com.example.eider.imagen_corporativa.modelos.Mascota;
+import com.example.eider.imagen_corporativa.sqlite.BaseDatos;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,9 +27,11 @@ public class Mascotas_adapter extends  RecyclerView.Adapter<Mascotas_adapter.MyV
 
     ArrayList <Mascota> ArraylistMascotas;
     Context context;
+    BaseDatos admin;
     public  Mascotas_adapter (ArrayList <Mascota> ArraylistMascotas,Context context ){
         this.ArraylistMascotas= ArraylistMascotas;
         this.context = context;
+        admin = new BaseDatos(context);
     }
 
 
@@ -71,12 +74,10 @@ public class Mascotas_adapter extends  RecyclerView.Adapter<Mascotas_adapter.MyV
     holder.huesoRate.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-           int Contador=0;
-           Contador++;
-           int nuevorate = mascota.getRaiting()+Contador;
-           mascota.setRaiting(nuevorate);
-           holder.raiting.setText(""+nuevorate);
-            Toast.makeText(context, "le diste like a "+mascota.getNombre(), Toast.LENGTH_SHORT).show();
+            admin.actualizarMascota(new Mascota(mascota.getId(),mascota.getNombre(),mascota.getRaiting()+1,mascota.getImagen()));
+           mascota.setRaiting(mascota.getRaiting()+1);
+           holder.raiting.setText(String.valueOf(mascota.getRaiting()));
+            //Toast.makeText(context, "le diste like a "+mascota.getNombre(), Toast.LENGTH_SHORT).show();
         }
     });
 

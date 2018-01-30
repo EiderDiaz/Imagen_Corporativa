@@ -4,11 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Mascota implements Parcelable {
-
+    private  int id;
     private String nombre;
     private  int raiting;
     private  String imagen;
 
+
+    public Mascota() {
+
+    }
 
     public Mascota(String nombre, int raiting, String imagen) {
         this.nombre = nombre;
@@ -16,6 +20,20 @@ public class Mascota implements Parcelable {
         this.imagen = imagen;
     }
 
+    public Mascota(int id,String nombre, int raiting, String imagen) {
+        this.id = id;
+        this.nombre = nombre;
+        this.raiting = raiting;
+        this.imagen = imagen;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getNombre() {
         return nombre;
     }
