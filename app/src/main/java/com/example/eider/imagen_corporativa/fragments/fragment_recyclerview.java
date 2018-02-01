@@ -1,4 +1,4 @@
-package com.example.eider.imagen_corporativa;
+package com.example.eider.imagen_corporativa.fragments;
 
 
 import android.app.Activity;
@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.eider.imagen_corporativa.AgregarMascota;
+import com.example.eider.imagen_corporativa.R;
 import com.example.eider.imagen_corporativa.adapters.Mascotas_adapter;
 import com.example.eider.imagen_corporativa.modelos.Mascota;
 import com.example.eider.imagen_corporativa.sqlite.BaseDatos;

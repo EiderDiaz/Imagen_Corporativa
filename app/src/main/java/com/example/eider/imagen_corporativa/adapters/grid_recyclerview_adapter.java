@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.eider.imagen_corporativa.R;
 import com.example.eider.imagen_corporativa.modelos.Mascota;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -62,9 +63,13 @@ public class grid_recyclerview_adapter extends  RecyclerView.Adapter<grid_recycl
 ///////////// mamalon si me sale de poner imagen directo solo usando string
             Resources res = context.getResources();
         String mDrawableName = mascota.getImagen();
-        int resID = res.getIdentifier(mDrawableName , "drawable", context.getPackageName());
+        Picasso.with(context)
+                .load(mascota.getImagen())
+                .placeholder(R.drawable.sanic)
+                .into(holder.imagenMascota);
+       /* int resID = res.getIdentifier(mDrawableName , "drawable", context.getPackageName());
         Drawable drawable = ContextCompat.getDrawable(context,resID); //res.getDrawable(resID );
-        holder.imagenMascota.setImageDrawable(drawable );
+        holder.imagenMascota.setImageDrawable(drawable );*/
         ///////////
 
 

@@ -2,8 +2,6 @@ package com.example.eider.imagen_corporativa;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -12,10 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.eider.imagen_corporativa.ToolBarMenu.About_me;
 import com.example.eider.imagen_corporativa.adapters.PageAdapter;
+import com.example.eider.imagen_corporativa.fragments.FragmentPerfil;
+import com.example.eider.imagen_corporativa.fragments.fragment_recyclerview;
 
 import java.util.ArrayList;
 
@@ -72,7 +71,7 @@ public class lista_mascota extends AppCompatActivity {
     private ArrayList<Fragment> agregarfragment(){
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new fragment_recyclerview());
-        fragments.add(new  FragmentPerfil());
+        fragments.add(new FragmentPerfil());
         return  fragments;
 
     }

@@ -34,10 +34,7 @@
                 android:value=".lista_mascota" />
         </activity>
         <activity android:name=".ToolBarMenu.About_me" />
-        <activity
-            android:name=".Email.Config"
-            android:label="@string/title_activity_contacto"
-            android:theme="@style/AppTheme" />
+
         <activity
             android:name=".Contact"
             android:label="@string/title_activity_contact"
