@@ -25,4 +25,6 @@ public Gson contruyeGsonDeserializador(){
     return   gsonBuilder.create();
 
 }
+
+
 }

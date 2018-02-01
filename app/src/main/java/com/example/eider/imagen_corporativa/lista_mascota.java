@@ -1,5 +1,6 @@
 package com.example.eider.imagen_corporativa;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,11 +11,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.eider.imagen_corporativa.ToolBarMenu.About_me;
+import com.example.eider.imagen_corporativa.adapters.Mascotas_adapter;
 import com.example.eider.imagen_corporativa.adapters.PageAdapter;
 import com.example.eider.imagen_corporativa.fragments.FragmentPerfil;
 import com.example.eider.imagen_corporativa.fragments.fragment_recyclerview;
+import com.example.eider.imagen_corporativa.modelos.Mascota;
 
 import java.util.ArrayList;
 
@@ -24,7 +28,7 @@ public class lista_mascota extends AppCompatActivity {
     private  Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
+    public static String cuentaSeleccionada = "";
 
 
     @Override
@@ -45,6 +49,19 @@ public class lista_mascota extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                if(data.getExtras().containsKey("cuenta")) {
+                    cuentaSeleccionada =  data.getExtras().getString("cuenta");
+
+                }
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,6 +80,11 @@ public class lista_mascota extends AppCompatActivity {
                 Intent intent1 = new Intent(getApplicationContext(),Contact.class);
                 startActivity(intent1);
                     break;
+
+            case  R.id.confCuenta:
+                Intent intent2 = new Intent(getApplicationContext(),ConfigurarCuenta.class);
+                startActivityForResult(intent2,1);
+                break;
 
         }
         return  true;

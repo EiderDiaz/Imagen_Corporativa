@@ -11,4 +11,5 @@
     <string name="title_activity_contacto">Contacto</string>
     <string name="title_activity_contact">Contact</string>
     <string name="DROP">DROP TABLE IF EXISTS</string>
+    <string name="title_activity_configurar_cuenta">ConfigurarCuenta</string>
 </resources>

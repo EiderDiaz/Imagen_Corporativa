@@ -8,7 +8,9 @@
     <item android:id="@+id/mabout"
         android:title="acerda de">
     </item>
-
+    <item android:id="@+id/confCuenta"
+        android:title="Configurar Cuenta">
+    </item>
 
 
 </menu>

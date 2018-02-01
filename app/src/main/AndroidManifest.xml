@@ -34,12 +34,15 @@
                 android:value=".lista_mascota" />
         </activity>
         <activity android:name=".ToolBarMenu.About_me" />
-
         <activity
             android:name=".Contact"
             android:label="@string/title_activity_contact"
             android:theme="@style/AppTheme" />
-        <activity android:name=".AgregarMascota"></activity>
+        <activity android:name=".AgregarMascota" />
+        <activity
+            android:name=".ConfigurarCuenta"
+            android:label="@string/title_activity_configurar_cuenta"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
