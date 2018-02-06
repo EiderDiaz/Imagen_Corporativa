@@ -11,6 +11,7 @@
     <item android:id="@+id/confCuenta"
         android:title="Configurar Cuenta">
     </item>
-
-
+    <item android:id="@+id/notificaciones"
+        android:title="Recibir Notificaciones">
+    </item>
 </menu>

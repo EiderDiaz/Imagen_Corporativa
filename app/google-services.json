@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "205145810785",
+    "firebase_url": "https://petagramy-f305d.firebaseio.com",
+    "project_id": "petagramy-f305d",
+    "storage_bucket": "petagramy-f305d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205145810785:android:8ad93503f1dff8cf",
+        "android_client_info": {
+          "package_name": "com.example.eider.imagen_corporativa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205145810785-idtu8ivflko3rja01sibufpu0u3127f7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eider.imagen_corporativa",
+            "certificate_hash": "848d76ac1d3b01e7f0e9cf3344e95f4d7d3028ab"
+          }
+        },
+        {
+          "client_id": "205145810785-ebkiv0dejbv3l5cjltba5u2rvqt9o4u8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA__j7r8JmtGJzPUdfl65HH-rYrRNZoK0Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205145810785-ebkiv0dejbv3l5cjltba5u2rvqt9o4u8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
