@@ -17,6 +17,8 @@ public interface EndPointAPI {
     @GET(ConstantesRestAPI.ID_NEGRO)
     Call<ContactoResponse> getRecentMedialuiisvega1();
 
+
+
     @FormUrlEncoded
     @POST(ConstantesRestAPI.INSERTAR_USUARIO)
     Call<UsuarioResponce> registarTokenId(@Field("token") String token,@Field("id_ig") String id_ig);
