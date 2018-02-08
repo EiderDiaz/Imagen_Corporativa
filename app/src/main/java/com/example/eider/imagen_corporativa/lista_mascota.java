@@ -14,6 +14,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.example.eider.imagen_corporativa.ToolBarMenu.About_me;
 import com.example.eider.imagen_corporativa.adapters.Mascotas_adapter;
 import com.example.eider.imagen_corporativa.adapters.PageAdapter;
+import com.example.eider.imagen_corporativa.firebase.AnimalResponse;
 import com.example.eider.imagen_corporativa.firebase.FirebaseRestApiAdapter;
 import com.example.eider.imagen_corporativa.firebase.UsuarioResponce;
 import com.example.eider.imagen_corporativa.fragments.FragmentPerfil;
@@ -44,7 +46,6 @@ public class lista_mascota extends AppCompatActivity {
     private ViewPager viewPager;
     public static String cuentaSeleccionada = "";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,7 @@ public class lista_mascota extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+
         SetupViewPager();
         if (toolbar != null){
             setSupportActionBar(toolbar);
@@ -109,6 +111,7 @@ public class lista_mascota extends AppCompatActivity {
 
     public void enviarToken(){
         String token = FirebaseInstanceId.getInstance().getToken();
+        //enviarTokenRegistro(token);
         enviarTokenRegistro(token);
     }
 
@@ -132,6 +135,8 @@ public class lista_mascota extends AppCompatActivity {
         });
 
     }
+
+
 
     public void lanzarNotificacion(String mensaje) {
         Intent intent = new Intent(this, lista_mascota.class);

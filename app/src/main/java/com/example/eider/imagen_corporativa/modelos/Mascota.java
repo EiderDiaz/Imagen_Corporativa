@@ -8,6 +8,7 @@ public class Mascota implements Parcelable {
     private String nombre;
     private  int raiting;
     private  String imagen;
+    private  String media_id;
 
 
     public Mascota() {
@@ -25,6 +26,22 @@ public class Mascota implements Parcelable {
         this.nombre = nombre;
         this.raiting = raiting;
         this.imagen = imagen;
+    }
+
+    public Mascota(int id, String nombre, int raiting, String imagen, String media_id) {
+        this.id = id;
+        this.nombre = nombre;
+        this.raiting = raiting;
+        this.imagen = imagen;
+        this.media_id = media_id;
+    }
+
+    public String getMedia_id() {
+        return media_id;
+    }
+
+    public void setMedia_id(String media_id) {
+        this.media_id = media_id;
     }
 
     public int getId() {

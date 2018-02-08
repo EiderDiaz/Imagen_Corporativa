@@ -30,6 +30,7 @@ public class MascotaDesearializador implements JsonDeserializer<ContactoResponse
         ArrayList<Mascota> mascotaArrayList= new ArrayList<>();
         for (int i =0;i<contactoResponseData.size();i++){
             JsonObject contactoResponseDataObject = contactoResponseData.get(i).getAsJsonObject();
+            String media_id = contactoResponseDataObject.get("id").getAsString();
             JsonObject userJson =contactoResponseDataObject.getAsJsonObject("user");
             String id = userJson.get("id").getAsString();
             String nombre = userJson.get("full_name").getAsString();
@@ -39,7 +40,7 @@ public class MascotaDesearializador implements JsonDeserializer<ContactoResponse
             JsonObject likesJson = contactoResponseDataObject.getAsJsonObject("likes");
             int likes = likesJson.get("count").getAsInt();
 
-            mascotaArrayList.add(new Mascota(Integer.valueOf(id),nombre,likes,urlFoto));
+            mascotaArrayList.add(new Mascota(Integer.valueOf(id),nombre,likes,urlFoto,media_id));
         }
         return mascotaArrayList;
     }

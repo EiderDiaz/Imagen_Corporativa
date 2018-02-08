@@ -14,11 +14,16 @@ public final class ConstantesRestAPI {
     public static final String BASE_URL_FIREBASE = "https://morning-shelf-64678.herokuapp.com/";
     public static final String POST_FIREBASE_TOKEN = "token-device/";
     public static final String INSERTAR_USUARIO = "registrar-usuario/";
+    public static final String INSERTAR_USUARIO_INSTAGRAM = "registrar-usuario-insagram/";
 
 
+    public static final String TOQUE_ANIMAL = "toque-animal/{id}/{animal}/";
+
+    public static final String LIKE_INSTAGRAM = "media/{mediaid}/likes";
+    //https://api.instagram.com/v1/media/1496158914924204736_26745972/likes?access_token=301295440.800d162.6b24086df07341f5886ebc48b677a1d9
     //https://api.instagram.com/v1/users/26745972/media/recent/?access_token=301295440.800d162.6b2
+    //https://api.instagram.com/v1/users/self/?access_token
+    //?access_token=301295440.800d162.6b24086df07341f5886ebc48b677a1d9
 
-    //https://api.instagram.com/v1/users/self/?access_token=ACCESS-TOKEN
-
-
+// mediaid   1496158914924204736_26745972
 }

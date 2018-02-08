@@ -18,6 +18,15 @@ public  class RestAPIAdapter {
         return  retrofit.create(EndPointAPI.class);
 
     }
+    public  EndPointAPI establecerConexionRestAPIInstagramLIKE(){
+        Retrofit  retrofit = new Retrofit.Builder()
+                .baseUrl(ConstantesRestAPI.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return  retrofit.create(EndPointAPI.class);
+
+    }
 
 public Gson contruyeGsonDeserializador(){
     GsonBuilder gsonBuilder =  new GsonBuilder();
