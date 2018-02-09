@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,6 +84,9 @@ public class grid_recyclerview_adapter extends  RecyclerView.Adapter<grid_recycl
             @Override
             public void onClick(View v) {
                 DarLikeInstagram(position);
+                toqueanimal();
+                int nuevorate = mascota.getRaiting()+1;
+                holder.raiting.setText(""+nuevorate);
             }
         });
        /* int resID = res.getIdentifier(mDrawableName , "drawable", context.getPackageName());
@@ -111,6 +115,26 @@ public class grid_recyclerview_adapter extends  RecyclerView.Adapter<grid_recycl
             }
         });
 
+    }
+
+    public void toqueanimal (){
+        Log.d("toque animal","true");
+        AnimalResponse animalResponse = new AnimalResponse("-L4lkKcTePZmfMSFIlMH", "","Perro");
+        FirebaseRestApiAdapter firebaseRestApiAdapter = new FirebaseRestApiAdapter();
+        EndPointAPI endPointAPI = firebaseRestApiAdapter.establecerConexionRestAPI();
+        Call<AnimalResponse> animalResponseCall= endPointAPI.toqueanimal(animalResponse.getId(),animalResponse.getanimal());
+        animalResponseCall.enqueue(new Callback<AnimalResponse>() {
+            @Override
+            public void onResponse(Call<AnimalResponse> call, Response<AnimalResponse> response) {
+                AnimalResponse animalResponse1 = response.body();
+                //Toast.makeText(getContext(), "ID_Firebase:"+animalResponse1.getId()+"\nAnimal:"+animalResponse1.getanimal(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<AnimalResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override

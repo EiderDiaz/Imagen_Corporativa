@@ -62,7 +62,7 @@ public class FragmentPerfil extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toqueanimal();
+                //toqueanimal();
             }
         });
 
