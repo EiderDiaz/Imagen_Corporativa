@@ -40,7 +40,7 @@ import retrofit2.Response;
 
 public class lista_mascota extends AppCompatActivity {
 
-
+    public static Context mContext;
     private  Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -54,14 +54,30 @@ public class lista_mascota extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
+        mContext = getBaseContext();
+
         SetupViewPager();
         if (toolbar != null){
             setSupportActionBar(toolbar);
 
         }
 
-    }
+        int defaultValue = 0;
+        try {
+            Toast.makeText(mContext, ""+getIntent().getIntExtra("One",defaultValue), Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        if (getIntent().getIntExtra("One",defaultValue)==1){
+            Toast.makeText(this, "k pex", Toast.LENGTH_SHORT).show();
+            int page = getIntent().getIntExtra("One", defaultValue);
+            viewPager.setCurrentItem(page);
+        }
 
+    }
+    public static Context getContext() {
+        return mContext;
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -135,7 +151,6 @@ public class lista_mascota extends AppCompatActivity {
         });
 
     }
-
 
 
     public void lanzarNotificacion(String mensaje) {

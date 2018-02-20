@@ -1,23 +1,29 @@
 package com.example.eider.imagen_corporativa.firebase;
 
 
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
+
+import  android.support.v4.app.NotificationCompat;
+import  android.support.v4.app.NotificationCompat.WearableExtender;
+import android.view.Gravity;
 
 import com.example.eider.imagen_corporativa.MainActivity;
 import com.example.eider.imagen_corporativa.R;
+import com.example.eider.imagen_corporativa.lista_mascota;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public static final String TAG = "Firebase";
+    public static final  int  NOTIFICATION_ID= 001;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -34,8 +40,37 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
     public void lanzarNotificacion(String mensaje) {
-        Intent intent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        Intent intent = new Intent();
+        intent.setAction("TOQUE_ANIMAL");
+        Intent intent1 = new Intent();
+        intent1.setAction("VER-MI-PERFIL");
+
+        Intent intentFollow = new Intent();
+        intentFollow.setAction("DAR-FOLLOW-UNFOLLOW");
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntentFollow = PendingIntent.getBroadcast(this, 2, intentFollow, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // TODO: 18/02/2018 aqui es donde modificas la accion para un werable
+        NotificationCompat.Action action= new NotificationCompat.Action.
+                Builder(R.drawable.ic_full_pokes,getString(R.string.texto_accion_toque),pendingIntent).build();
+        // TODO: 18/02/2018 cale perron
+        NotificationCompat.Action action2= new NotificationCompat.Action.
+                Builder(R.drawable.home,"alv perro",pendingIntent2).build();
+
+        // TODO: 18/02/2018 cale perron
+        NotificationCompat.Action actionfollow= new NotificationCompat.Action.Builder(R.drawable.back,"follow/unfollow",pendingIntentFollow).build();
+
+
+
+// TODO: 18/02/2018 se supone que aqui estan caracteristicas que vuelven a la notificacion en el dispoitivo werable mas visuazlmente atractivo
+        NotificationCompat.WearableExtender wearableExtender  = new NotificationCompat.WearableExtender()
+                .setHintHideIcon(true)
+                .setBackground(BitmapFactory.decodeResource(getResources(),R.drawable.hex_background))
+                .setGravity(Gravity.CENTER_VERTICAL);
+
+
         Uri sonido = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
@@ -43,11 +78,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentText(mensaje)
                 .setSound(sonido)
                 .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .extend(wearableExtender
+                        .addAction(action)
+                        .addAction(action2)
+                        .addAction(actionfollow))
+                //.addAction(action)
+                ;
 
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notificationCompat.build());
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(NOTIFICATION_ID, notificationCompat.build());
 
 
     }

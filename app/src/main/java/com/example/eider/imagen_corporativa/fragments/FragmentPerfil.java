@@ -114,7 +114,7 @@ public class FragmentPerfil extends Fragment {
 
         FirebaseRestApiAdapter firebaseRestApiAdapter = new FirebaseRestApiAdapter();
         EndPointAPI endPointAPI = firebaseRestApiAdapter.establecerConexionRestAPI();
-        Call<AnimalResponse> usuarioResponceCall= endPointAPI.registarUsuarioInstagram(token,ANIMAL_RECEPTOR);
+        Call<AnimalResponse> usuarioResponceCall= endPointAPI.registarUsuarioInstagram(token,"emulador");
 
         usuarioResponceCall.enqueue(new Callback<AnimalResponse>() {
             @Override
@@ -122,7 +122,7 @@ public class FragmentPerfil extends Fragment {
                 AnimalResponse animalResponse = response.body();
                 Toast.makeText(getContext(), "id:"+animalResponse.getId()+"\n animal:"+animalResponse.getanimal()
                         +"\ntoken:"+animalResponse.getToken(), Toast.LENGTH_SHORT).show();
-                //lanzarNotificacion("26745972");
+
             }
 
             @Override
