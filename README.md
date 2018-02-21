@@ -1,9 +1,16 @@
-## Video dando el recorrido de Petagram
+# Instrucciones del proyecto
 
-[Video Recorrido Petagram](https://youtu.be/KNWwavh6Pwc)
+## 1.- corre el proyecto el con el usuario por default (eiderdiaz)
+## 2.- vincula tu celular con el emulador del wearable
+## 3.- emula un segundo proyecto y cambia de cuenta como muestra el siguiente gif:
+<img src="https://github.com/EiderDiaz/Imagen_Corporativa/blob/master/gif_cambiar_cuenta.gif">
 
-## Pdf con EndPoints
-[EndPoints Firebase Api](https://github.com/EiderDiaz/Imagen_Corporativa/blob/master/descripcion%20endpoints%20para%20dar%20like%20en%20instagram%20y%20firebase%20notifications.pdf)
+## 4.- da like en el emulador a cualquier foto
+
+# Video demostrando el funcionamiento 
+[Video Werable Notification](https://youtu.be/PJhU8RQsIvs)
+
+
  
 
 
