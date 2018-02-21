@@ -152,7 +152,7 @@ public class FragmentPerfil extends Fragment {
         });
     }
     ////////////////////
-    private void obtenerMediosRecientesLuis() {
+    public  void obtenerMediosRecientesLuis() {
         RestAPIAdapter restAPIAdapter= new RestAPIAdapter();
         Gson gson = restAPIAdapter.contruyeGsonDeserializador();
         EndPointAPI endPointAPI= restAPIAdapter.establecerConexionRestAPIInstagram(gson);

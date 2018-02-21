@@ -42,30 +42,29 @@
         <activity
             android:name=".ConfigurarCuenta"
             android:label="@string/title_activity_configurar_cuenta"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
 
-        <service
-            android:name=".firebase.MyFirebaseMessagingService">
+        <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".firebase.NotificationIDTokenService">
+        <service android:name=".firebase.NotificationIDTokenService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
         <receiver android:name=".firebase.toqueAnimal">
             <intent-filter>
-                <action android:name="TOQUE_ANIMAL"> </action>
-                <action android:name="VER-MI-PERFIL"> </action>
-                <action android:name="DAR-FOLLOW-UNFOLLOW"> </action>
-
-
+                <action android:name="TOQUE_ANIMAL"></action>
+                <action android:name="VER-MI-PERFIL"></action>
+                <action android:name="DAR-FOLLOW-UNFOLLOW"></action>
+                <action android:name="VER-USUARIO"></action>
             </intent-filter>
         </receiver>
-    </application>
 
+        <activity android:name=".ver_perfil"></activity>
+    </application>
 
 </manifest>

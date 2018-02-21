@@ -40,28 +40,35 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
     public void lanzarNotificacion(String mensaje) {
-        Intent intent = new Intent();
+        /*Intent intent = new Intent();
         intent.setAction("TOQUE_ANIMAL");
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+  // TODO: 18/02/2018 aqui es donde modificas la accion para un werable
+        NotificationCompat.Action action= new NotificationCompat.Action.
+                Builder(R.drawable.ic_full_pokes,getString(R.string.texto_accion_toque),pendingIntent).build();
+        */
+        
         Intent intent1 = new Intent();
         intent1.setAction("VER-MI-PERFIL");
 
         Intent intentFollow = new Intent();
         intentFollow.setAction("DAR-FOLLOW-UNFOLLOW");
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intentVerUsuario = new Intent();
+        intentVerUsuario.setAction("VER-USUARIO");
+
+        PendingIntent pendingIntentVerMiPerfil = PendingIntent.getBroadcast(this, 1, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         PendingIntent pendingIntentFollow = PendingIntent.getBroadcast(this, 2, intentFollow, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntentVerUsuario = PendingIntent.getBroadcast(this, 3, intentVerUsuario, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        // TODO: 18/02/2018 aqui es donde modificas la accion para un werable
-        NotificationCompat.Action action= new NotificationCompat.Action.
-                Builder(R.drawable.ic_full_pokes,getString(R.string.texto_accion_toque),pendingIntent).build();
-        // TODO: 18/02/2018 cale perron
         NotificationCompat.Action action2= new NotificationCompat.Action.
-                Builder(R.drawable.home,"alv perro",pendingIntent2).build();
+                Builder(R.drawable.home,"ver mi perfil",pendingIntentVerMiPerfil).build();
 
-        // TODO: 18/02/2018 cale perron
-        NotificationCompat.Action actionfollow= new NotificationCompat.Action.Builder(R.drawable.back,"follow/unfollow",pendingIntentFollow).build();
+        NotificationCompat.Action actionfollow= new NotificationCompat.Action.
+                Builder(R.drawable.back,"follow/unfollow",pendingIntentFollow).build();
 
+        NotificationCompat.Action actionVerUsuario= new NotificationCompat.Action.
+                Builder(R.drawable.avatar,"ver usuario",pendingIntentVerUsuario).build();
 
 
 // TODO: 18/02/2018 se supone que aqui estan caracteristicas que vuelven a la notificacion en el dispoitivo werable mas visuazlmente atractivo
@@ -70,19 +77,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setBackground(BitmapFactory.decodeResource(getResources(),R.drawable.hex_background))
                 .setGravity(Gravity.CENTER_VERTICAL);
 
-
         Uri sonido = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("Notificacion")
                 .setContentText(mensaje)
                 .setSound(sonido)
-                .setContentIntent(pendingIntent)
+                .setContentIntent(pendingIntentVerMiPerfil)
                 .setAutoCancel(true)
                 .extend(wearableExtender
-                        .addAction(action)
                         .addAction(action2)
-                        .addAction(actionfollow))
+                        .addAction(actionfollow)
+                        .addAction(actionVerUsuario));
                 //.addAction(action)
                 ;
 

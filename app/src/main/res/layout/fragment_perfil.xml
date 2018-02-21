@@ -19,7 +19,7 @@
         app:civ_shadow="true"
         app:civ_shadow_color="#8BC34A"
         app:civ_shadow_radius="10"
-        android:onClick="toqueanimal" />
+        />
 
     <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/imgPerfil"

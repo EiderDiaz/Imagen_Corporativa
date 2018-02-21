@@ -3,6 +3,9 @@ package com.example.eider.imagen_corporativa.restAPI;
 import com.example.eider.imagen_corporativa.firebase.AnimalResponse;
 import com.example.eider.imagen_corporativa.firebase.UsuarioResponce;
 import com.example.eider.imagen_corporativa.modelos.ContactoResponse;
+import com.example.eider.imagen_corporativa.modelos.data;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -13,6 +16,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface EndPointAPI {
 
@@ -43,5 +47,7 @@ public interface EndPointAPI {
     @POST(ConstantesRestAPI.FOLLOW_INSTAGRAM)
     Call<ResponseBody> FollowEnIntragram(@Path("user-id") String user_id,@Field("access_token") String access_token,@Field("action") String action ) ;
 
+    @GET(ConstantesRestAPI.VERIFICAR_FOLLOW_INSTAGRAM)
+    Call<Object> VerificarFollowEnIntragram();
 
 }

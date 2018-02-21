@@ -23,9 +23,7 @@ public  class RestAPIAdapter {
                 .baseUrl(ConstantesRestAPI.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         return  retrofit.create(EndPointAPI.class);
-
     }
 
 public Gson contruyeGsonDeserializador(){

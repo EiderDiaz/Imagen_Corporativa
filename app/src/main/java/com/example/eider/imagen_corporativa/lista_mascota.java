@@ -73,6 +73,7 @@ public class lista_mascota extends AppCompatActivity {
             int page = getIntent().getIntExtra("One", defaultValue);
             viewPager.setCurrentItem(page);
         }
+        
 
     }
     public static Context getContext() {
